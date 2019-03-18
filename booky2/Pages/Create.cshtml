@@ -1,0 +1,16 @@
+﻿@page
+@model booky2.Pages.CreateModel
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create new book</h1>
+
+<form method="POST">
+    <div>Title: <input asp-for="Book.Title" /></div>
+    <div>Genre: <input asp-for="Book.Genre" /></div>
+    <div>Price: <input asp-for="Book.Price" /></div>
+    <div>Author's First Name: <input asp-for="FirstName" /></div>
+    <div>Author's Last Name <input asp-for="LastName" /></div>
+    <input type="submit" />
+</form>
