@@ -11,7 +11,7 @@ namespace BookyServices
 {
     public class BookyBookService
     {
-        private BookyContext _context;
+        private readonly BookyContext _context;
 
         public BookyBookService(BookyContext context)
         {
@@ -90,6 +90,20 @@ namespace BookyServices
 
         public async void ModifyAsync(Book newBook)
         {
+            //if ((await _context.Authors.FirstOrDefaultAsync(author =>
+            //        author.LastName == newBook.Author.LastName && author.FirstName == newBook.Author.LastName)) == null)
+            //{
+            //    await _context.Authors.AddAsync(new Author()
+            //    {
+            //        LastName = newBook.Author.LastName,
+            //        FirstName = newBook.Author.FirstName
+            //    });
+            //    await _context.SaveChangesAsync();
+            //}
+
+            //newBook.Author.Id = (await _context.Authors.FirstOrDefaultAsync(author =>
+            //    author.LastName == newBook.Author.LastName && author.FirstName == newBook.Author.LastName)).Id;
+
             _context.Attach(newBook).State = EntityState.Modified;
             try
             {

@@ -21,15 +21,15 @@
         </div>
     </div>
     <div>
-        <label asp-for="FirstNameOfAuthor"></label>
+        <label asp-for="Book.Author.FirstName"></label>
         <div>
-            <input asp-for="FirstNameOfAuthor" />
+            <input asp-for="Book.Author.FirstName" />
         </div>
     </div>
     <div>
-        <label asp-for="LastNameOfAuthor"></label>
+        <label asp-for="Book.Author.LastName"></label>
         <div>
-            <input asp-for="LastNameOfAuthor" />
+            <input asp-for="Book.Author.LastName" />
         </div>
     </div>
     <div>
@@ -38,5 +38,7 @@
             <input asp-for="Book.Price" />
         </div>
     </div>
-    <input type="submit" />
+    <div>
+        <button type="submit">Save</button>
+    </div>
 </form>

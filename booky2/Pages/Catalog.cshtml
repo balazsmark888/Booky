@@ -30,7 +30,7 @@
                             <td>@book.Price</td>
                             <td method="POST">
                                 <button type="submit" asp-page-handler="delete" asp-route-id="@book.Id">Delete</button>
-                                <button type="submit" asp-page="./Edit" asp-route-id="@book.Id">Edit</button>
+                                <button type="submit" asp-page-handler="edit" asp-route-id="@book.Id">Edit</button>
                             </td>
                         </tr>
                     }

@@ -33,5 +33,10 @@ namespace booky2.Pages
             await _bookService.RemoveAsync(id);
             return RedirectToPage();
         }
+
+        public IActionResult OnPostEditAsync(int id)
+        {
+            return RedirectToPage("/Edit/" + id);
+        }
     }
 }

@@ -26,18 +26,13 @@ namespace booky2.Pages
             _bookService = bookService;
         }
 
-        public void OnGet(int id)
-        {
-            Book = _bookService.GetById(id);
-        }
-
         public async Task<IActionResult> OnGetAsync(int id)
         {
             Book = await _bookService.GetByIdAsync(id);
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync()
+        public IActionResult OnPostAsync()
         {
             if (!ModelState.IsValid)
             {
