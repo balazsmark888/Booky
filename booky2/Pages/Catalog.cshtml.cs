@@ -16,6 +16,7 @@ namespace booky2.Pages
 
         private readonly BookyBookService _bookService;
 
+        [BindProperty]
         public IEnumerable<Book> Books { get; set; }
 
         public CatalogModel(BookyBookService bookService)
@@ -29,7 +30,8 @@ namespace booky2.Pages
 
         public async Task<IActionResult> OnPostDeleteAsync(int id)
         {
-            _bookService.RemoveAsync(id);
+            await _bookService.RemoveAsync(id);
+            return RedirectToPage();
         }
     }
 }

@@ -87,5 +87,18 @@ namespace BookyServices
         {
             return GetByIdAsync(id).Result.Price;
         }
+
+        public async void ModifyAsync(Book newBook)
+        {
+            _context.Attach(newBook).State = EntityState.Modified;
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException dbUpdateConcurrencyException)
+            {
+                throw new Exception($"The book {newBook.Title} could not be updated!", dbUpdateConcurrencyException);
+            }
+        }
     }
 }

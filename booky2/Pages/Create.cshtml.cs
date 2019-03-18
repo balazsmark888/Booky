@@ -18,9 +18,9 @@ namespace booky2.Pages
         [BindProperty]
         public Book Book { get; set; }
         [BindProperty]
-        public string FirstName { get; set; }
+        public string FirstNameOfAuthor { get; set; }
         [BindProperty]
-        public string LastName { get; set; }
+        public string LastNameOfAuthor { get; set; }
 
         public CreateModel(BookyContext context)
         {
@@ -40,18 +40,18 @@ namespace booky2.Pages
             }
 
             if ((await _context.Authors.FirstOrDefaultAsync(author =>
-                    author.LastName == LastName && author.FirstName == FirstName)) == null)
+                    author.LastName == LastNameOfAuthor && author.FirstName == FirstNameOfAuthor)) == null)
             {
                 await _context.Authors.AddAsync(new Author()
                 {
-                    FirstName = FirstName,
-                    LastName = LastName
+                    FirstName = FirstNameOfAuthor,
+                    LastName = LastNameOfAuthor
                 });
                 await _context.SaveChangesAsync();
             }
 
             Book.Author = await _context.Authors.FirstOrDefaultAsync(author =>
-                author.LastName == LastName && author.FirstName == FirstName);
+                author.LastName == LastNameOfAuthor && author.FirstName == FirstNameOfAuthor);
 
             await _context.Books.AddAsync(Book);
             await _context.SaveChangesAsync();
