@@ -4,6 +4,8 @@
     ViewData["Title"] = "Catalog";
 }
 
+<h3>@Model.LogMessage</h3>
+
 <h1>Catalog</h1>
 <form method="POST">
     <div id="books">
@@ -31,6 +33,7 @@
                             <td method="POST">
                                 <button type="submit" asp-page-handler="delete" asp-route-id="@book.Id">Delete</button>
                                 <button type="submit" asp-page-handler="edit" asp-route-id="@book.Id">Edit</button>
+                                <button type="submit" asp-page-handler="detail" asp-route-id="@book.Id">Details</button>
                             </td>
                         </tr>
                     }

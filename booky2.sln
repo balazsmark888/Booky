@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.489
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "booky2", "booky2\booky2.csproj", "{B4FC08C8-31D8-4F08-8098-1448C1C7D080}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "booky2", "booky2\booky2.csproj", "{B4FC08C8-31D8-4F08-8098-1448C1C7D080}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookyData", "BookyData\BookyData.csproj", "{8821F274-8F09-4190-98D9-1F70045E04BD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookyData", "BookyData\BookyData.csproj", "{8821F274-8F09-4190-98D9-1F70045E04BD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookyServices", "BookyServices\BookyServices.csproj", "{5E9A600A-7820-483D-AD8F-F37CDA72CF71}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookyServices", "BookyServices\BookyServices.csproj", "{5E9A600A-7820-483D-AD8F-F37CDA72CF71}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

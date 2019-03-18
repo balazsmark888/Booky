@@ -88,31 +88,23 @@ namespace BookyServices
             return GetByIdAsync(id).Result.Price;
         }
 
-        public async void ModifyAsync(Book newBook)
+        public async Task<int> UpdateAsync(Book newBook)
         {
-            //if ((await _context.Authors.FirstOrDefaultAsync(author =>
-            //        author.LastName == newBook.Author.LastName && author.FirstName == newBook.Author.LastName)) == null)
-            //{
-            //    await _context.Authors.AddAsync(new Author()
-            //    {
-            //        LastName = newBook.Author.LastName,
-            //        FirstName = newBook.Author.FirstName
-            //    });
-            //    await _context.SaveChangesAsync();
-            //}
-
-            //newBook.Author.Id = (await _context.Authors.FirstOrDefaultAsync(author =>
-            //    author.LastName == newBook.Author.LastName && author.FirstName == newBook.Author.LastName)).Id;
-
-            _context.Attach(newBook).State = EntityState.Modified;
-            try
+            Book oldBook = await GetByIdAsync(newBook.Id);
+            if (oldBook.Title != newBook.Title)
             {
-                await _context.SaveChangesAsync();
+                (await _context.Books.FirstOrDefaultAsync(book => book.Id == newBook.Id)).Title = newBook.Title;
             }
-            catch (DbUpdateConcurrencyException dbUpdateConcurrencyException)
+            if (oldBook.Genre != newBook.Genre)
             {
-                throw new Exception($"The book {newBook.Title} could not be updated!", dbUpdateConcurrencyException);
+                (await _context.Books.FirstOrDefaultAsync(book => book.Id == newBook.Id)).Genre = newBook.Genre;
             }
+            if (oldBook.Price != newBook.Price)
+            {
+                (await _context.Books.FirstOrDefaultAsync(book => book.Id == newBook.Id)).Price = newBook.Price;
+            }
+            await _context.SaveChangesAsync();
+            return newBook.Id;
         }
     }
 }

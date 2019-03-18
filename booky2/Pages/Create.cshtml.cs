@@ -15,6 +15,9 @@ namespace booky2.Pages
 
         private readonly BookyContext _context;
 
+        [TempData]
+        public string LogMessage { get; set; }
+
         [BindProperty]
         public Book Book { get; set; }
         [BindProperty]
@@ -55,6 +58,8 @@ namespace booky2.Pages
 
             await _context.Books.AddAsync(Book);
             await _context.SaveChangesAsync();
+
+            LogMessage = $"Book {Book.Title} added to the database.";
 
             return RedirectToPage("/Catalog");
         }

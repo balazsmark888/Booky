@@ -7,6 +7,7 @@ using BookyData.Models;
 using BookyServices;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 
 namespace booky2.Pages
 {
@@ -14,31 +15,38 @@ namespace booky2.Pages
     {
         private readonly BookyBookService _bookService;
 
+        [TempData]
+        public string LogMessage { get; set; }
+
         [BindProperty]
         public Book Book { get; set; }
-        [BindProperty]
-        public string FirstNameOfAuthor { get; set; }
-        [BindProperty]
-        public string LastNameOfAuthor { get; set; }
 
         public EditModel(BookyBookService bookService)
         {
             _bookService = bookService;
         }
 
-        public async Task<IActionResult> OnGetAsync(int id)
+        public async Task<IActionResult> OnGetAsync(int? id)
         {
-            Book = await _bookService.GetByIdAsync(id);
+            if (id == null)
+            {
+                return RedirectToPage("/Index");
+            }
+            Book = await _bookService.GetByIdAsync((int)id);
             return Page();
         }
 
-        public IActionResult OnPostAsync()
+        public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
             {
-                return RedirectToPage("/Catalog");
+                return Page();
             }
-            _bookService.ModifyAsync(Book);
+       
+            await _bookService.UpdateAsync(Book);
+
+            LogMessage = $"Book {Book.Title} modified succesfully.";
+
             return RedirectToPage("/Catalog");
         }
     }

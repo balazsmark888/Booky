@@ -9,33 +9,33 @@
 <form method="POST">
     <div asp-validation-summary="All"></div>
     <div>
-        <label asp-for="Book.Title"></label>
+        <label asp-for="@Model.Book.Title"></label>
         <div>
-            <input asp-for="Book.Title" />
+            <input asp-for="@Model.Book.Title" />
+        </div>
+    </div>
+    <div hidden>
+        <label asp-for="@Model.Book.Author"></label>
+        <div>
+            <input asp-for="@Model.Book.Author" />
+        </div>
+    </div>
+    <div hidden>
+        <label asp-for="@Model.Book.Id"></label>
+        <div>
+            <input asp-for="@Model.Book.Id" />
         </div>
     </div>
     <div>
-        <label asp-for="Book.Genre"></label>
+        <label asp-for="@Model.Book.Genre"></label>
         <div>
-            <input asp-for="Book.Genre" />
+            <input asp-for="@Model.Book.Genre" />
         </div>
     </div>
     <div>
-        <label asp-for="Book.Author.FirstName"></label>
+        <label asp-for="@Model.Book.Price"></label>
         <div>
-            <input asp-for="Book.Author.FirstName" />
-        </div>
-    </div>
-    <div>
-        <label asp-for="Book.Author.LastName"></label>
-        <div>
-            <input asp-for="Book.Author.LastName" />
-        </div>
-    </div>
-    <div>
-        <label asp-for="Book.Price"></label>
-        <div>
-            <input asp-for="Book.Price" />
+            <input asp-for="@Model.Book.Price" />
         </div>
     </div>
     <div>
